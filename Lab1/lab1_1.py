@@ -5,13 +5,20 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+
+
+
+def ConnectToDatabase(path):
+    connection = sqlite3.connect(path)
+    return connection
+
 # Define the path to the database
 path = "/kaggle/input/formula-1-race-data-sqlite/"
 database = 'C:\\1KOYARA\\Nebitno\Анализ больших данных\\Lab1\\Formula 1 Race Data\\formula1.sqlite'
 
 # Establish a connection to the SQLite database
 try:
-    connection = sqlite3.connect(database)
+    connection = ConnectToDatabase(path)
     cursor = connection.cursor()
     
     # Fetch table names
@@ -84,3 +91,4 @@ finally:
     # Close the database connection
     if connection:
         connection.close()
+
